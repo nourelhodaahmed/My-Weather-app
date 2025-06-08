@@ -12,6 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val lightBlue = Color(0xFF87CEFA)
 val darkBlue = Color(0xFF060414)
+val Blue32pre = Color(0x5200619D)
 
 val darkBlue60pre = Color(0x99060414)
 val darkBlue8pre = Color(0x14060414)
