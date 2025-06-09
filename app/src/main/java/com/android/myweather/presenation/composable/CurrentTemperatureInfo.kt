@@ -7,15 +7,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -71,32 +68,9 @@ private fun MinMaxButton(){
             .background(color = darkBlue8pre, shape = RoundedCornerShape(100.dp))
             .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
-        MinMaxTemp(painterResource(R.drawable.arrow_up),"32°C")
+        MinMaxTemperature(painterResource(R.drawable.arrow_up),"32°C", darkBlue60pre, darkBlue60pre)
         VerticalDivider(color = darkBlue24pre, modifier = Modifier.height(19.dp))
-        MinMaxTemp(painterResource(R.drawable.arrow_down),"20°C")
-    }
-}
-
-@Composable
-private fun MinMaxTemp(icon: Painter, text: String){
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
-        Icon(
-            painter = icon,
-            contentDescription = null,
-            tint = darkBlue60pre,
-            modifier = Modifier.size(12.dp).align(Alignment.CenterVertically)
-        )
-        Text(
-            text = text,
-            color = darkBlue60pre,
-            fontSize = text16,
-            letterSpacing = letterSpacing25,
-            textAlign = TextAlign.Start,
-            fontWeight = FontWeight.W500,
-            fontFamily = urbanist,
-        )
+        MinMaxTemperature(painterResource(R.drawable.arrow_down),"20°C", darkBlue60pre, darkBlue60pre)
     }
 }
 
