@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -19,20 +20,25 @@ import com.android.myweather.R
 import com.android.myweather.ui.theme.Blue32pre
 
 @Composable
-fun CurrentWeatherIcon(){
+fun CurrentWeatherIcon(
+    parentModifier: Modifier,
+    imageModifier: Modifier = Modifier
+        .padding(top = 24.dp, start = 30.dp, bottom = 26.dp)
+        .height(200.dp)
+        .width(220.21.dp),
+    blurModifier: Modifier = Modifier.size(250.dp)
+    ){
     Box (
-        modifier = Modifier.size(250.dp)
+        modifier = parentModifier
     ){
         Box(
-            modifier = Modifier
-                .size(250.dp)
+            modifier = blurModifier
                 .blur(150.dp)
                 .clip(CircleShape)
                 .align(Alignment.TopCenter)
         ){
             Box(
-                modifier = Modifier
-                    .size(250.dp)
+                modifier = blurModifier
                     .clip(CircleShape)
                     .background(Blue32pre, shape = CircleShape)
             )
@@ -41,10 +47,8 @@ fun CurrentWeatherIcon(){
         Image(
             painter = painterResource(R.drawable.weather_icon),
             contentDescription = null,
-            modifier = Modifier
-                .height(200.dp)
-                .width(220.21.dp)
-                .align(Alignment.CenterEnd)
+            modifier = imageModifier
+                //.align(Alignment.CenterEnd)
         )
     }
 }
@@ -52,5 +56,5 @@ fun CurrentWeatherIcon(){
 @Preview(showBackground = true)
 @Composable
 fun CurrentWeatherIconPreview(){
-    CurrentWeatherIcon()
+    CurrentWeatherIcon(parentModifier = Modifier)
 }

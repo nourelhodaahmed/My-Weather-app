@@ -29,8 +29,10 @@ import com.android.myweather.ui.theme.text64
 import com.android.myweather.ui.theme.urbanist
 
 @Composable
-fun CurrentTemperatureInfo(){
-    Column {
+fun CurrentTemperatureInfo(modifier: Modifier){
+    Column (
+        modifier = modifier
+    ){
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -77,5 +79,5 @@ private fun MinMaxButton(){
 @Preview(showBackground = true)
 @Composable
 private fun CurrentTemperatureInfoPreview(){
-    CurrentTemperatureInfo()
+    CurrentTemperatureInfo(Modifier)
 }
