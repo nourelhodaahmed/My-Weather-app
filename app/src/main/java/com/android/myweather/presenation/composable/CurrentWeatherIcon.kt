@@ -36,7 +36,6 @@ fun CurrentWeatherIcon(
             modifier = blurModifier
                 .clip(CircleShape)
                 .blur(150.dp)
-                .align(Alignment.TopCenter)
         ){
             Box(
                 modifier = blurModifier
@@ -45,7 +44,6 @@ fun CurrentWeatherIcon(
                     .background(Blue32pre, shape = CircleShape)
             )
         }
-
         Image(
             painter = painterResource(R.drawable.weather_icon),
             contentDescription = null,
