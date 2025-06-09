@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -26,7 +27,9 @@ import com.android.myweather.ui.theme.urbanist
 fun TodayForecast(
     forecastStates: List<TodayForecastUiState>
 ){
-    Column {
+    Column(
+        modifier = Modifier.padding(horizontal = 12.dp)
+    ){
         Text(
             text = "Today",
             color = darkBlue87pre,

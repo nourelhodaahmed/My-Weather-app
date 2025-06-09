@@ -1,5 +1,6 @@
 package com.android.myweather.presenation.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -54,9 +55,9 @@ fun WeeklyForecast(
             colors = CardDefaults.cardColors(containerColor = white70pre),
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(4.dp)
                 .clip(RoundedCornerShape(24.dp))
                 .border(width = 1.dp, color = darkBlue8pre, shape = RoundedCornerShape(24.dp))
-                .padding(4.dp)
         ){
             for(forecast in 0..(forecastStates.size - 1)){
                 WeeklyForecastItem(weeklyForecastUiState = forecastStates[forecast])
