@@ -14,7 +14,10 @@ val lightBlue = Color(0xFF87CEFA)
 val darkBlue = Color(0xFF060414)
 val Blue32pre = Color(0x5200619D)
 val darkRed = Color(0xFF323232)
+val white70pre = Color(0xB3FFFFFF)
 
 val darkBlue60pre = Color(0x99060414)
 val darkBlue8pre = Color(0x14060414)
 val darkBlue24pre = Color(0x3D060414)
+val darkBlue87pre = Color(0xDE060414)
+
