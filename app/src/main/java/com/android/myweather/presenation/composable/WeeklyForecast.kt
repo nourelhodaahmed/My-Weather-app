@@ -35,7 +35,10 @@ fun WeeklyForecast(
     forecastStates: List<WeeklyForecastUiState>
 ){
     Column(
-        modifier = Modifier.padding(horizontal = 12.dp)
+        modifier = Modifier
+            .padding(horizontal = 12.dp)
+            .padding(bottom = 32.dp)
+
     ) {
         Text(
             text = "Next 7 days",
@@ -55,9 +58,9 @@ fun WeeklyForecast(
                 .border(width = 1.dp, color = darkBlue8pre, shape = RoundedCornerShape(24.dp))
                 .padding(4.dp)
         ){
-            LazyColumn {
-                items(forecastStates) {
-                    WeeklyForecastItem(weeklyForecastUiState = it)
+            for(forecast in 0..(forecastStates.size - 1)){
+                WeeklyForecastItem(weeklyForecastUiState = forecastStates[forecast])
+                if (forecast != forecastStates.size - 1){
                     HorizontalDivider(color = darkBlue8pre)
                 }
             }

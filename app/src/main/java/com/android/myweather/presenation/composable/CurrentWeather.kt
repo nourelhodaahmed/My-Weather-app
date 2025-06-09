@@ -12,9 +12,11 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 
 @Composable
-fun CurrentWeather(){
+fun CurrentWeather(
+    modifier: Modifier = Modifier,
+){
     ConstraintLayout (
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ){
         val (weatherImg, weatherDetails) = createRefs()
         CurrentWeatherIcon(

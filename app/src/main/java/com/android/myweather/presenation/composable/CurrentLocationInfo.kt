@@ -2,6 +2,7 @@ package com.android.myweather.presenation.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -20,9 +21,10 @@ import com.android.myweather.ui.theme.text16
 import com.android.myweather.ui.theme.urbanist
 
 @Composable
-fun CurrentLocationInfo(){
+fun CurrentLocationInfo(modifier: Modifier = Modifier){
     Row(
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = modifier
     ){
         Icon(
             painter = painterResource(R.drawable.location),

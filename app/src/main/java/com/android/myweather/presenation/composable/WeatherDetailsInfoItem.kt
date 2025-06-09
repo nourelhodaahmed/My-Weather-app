@@ -1,6 +1,8 @@
 package com.android.myweather.presenation.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -8,8 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,17 +39,17 @@ fun WeatherDetailsInfoItem(
     value: String = "13 KM/h",
     name: String = "Wind"
 ){
-    Card(
-        colors = CardDefaults.cardColors(containerColor = white70pre),
+    Box(
+        contentAlignment = Alignment.Center,
         modifier = Modifier
             .width(108.dp)
             .clip(RoundedCornerShape(24.dp))
             .border(width = 1.dp, color = darkBlue8pre, shape = RoundedCornerShape(24.dp))
-            .padding(vertical = 16.dp, horizontal = 8.dp)
+            .background(color = white70pre, shape = RoundedCornerShape(24.dp))
     ){
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.padding(vertical = 16.dp, horizontal = 8.dp)
         ){
             Icon(
                 painter = icon,
@@ -76,11 +76,8 @@ fun WeatherDetailsInfoItem(
                 fontWeight = FontWeight.W400,
                 fontFamily = urbanist,
             )
-
         }
-
     }
-
 }
 
 @Preview(showBackground = true)

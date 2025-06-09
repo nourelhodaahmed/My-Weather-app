@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,13 +34,14 @@ fun CurrentWeatherIcon(
     ){
         Box(
             modifier = blurModifier
-                .blur(150.dp)
                 .clip(CircleShape)
+                .blur(150.dp)
                 .align(Alignment.TopCenter)
         ){
             Box(
                 modifier = blurModifier
                     .clip(CircleShape)
+                    .blur(150.dp)
                     .background(Blue32pre, shape = CircleShape)
             )
         }
@@ -48,7 +50,6 @@ fun CurrentWeatherIcon(
             painter = painterResource(R.drawable.weather_icon),
             contentDescription = null,
             modifier = imageModifier
-                //.align(Alignment.CenterEnd)
         )
     }
 }
