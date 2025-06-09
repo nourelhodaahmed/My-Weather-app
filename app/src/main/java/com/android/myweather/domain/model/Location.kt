@@ -1,4 +1,7 @@
 package com.android.myweather.domain.model
 
-class Location {
-}
+data class Location (
+    val latitude: Double,
+    val longitude: Double,
+    val city: String
+)
