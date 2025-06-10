@@ -40,6 +40,7 @@ fun TodayForeCastItem(
 ){
     Box(
         modifier = Modifier
+            .padding(start = 12.dp)
             .width(88.dp)
     ){
         Card(

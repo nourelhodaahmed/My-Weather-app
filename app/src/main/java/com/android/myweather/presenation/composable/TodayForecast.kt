@@ -43,7 +43,6 @@ fun TodayForecast(
         Spacer(Modifier.height(24.dp))
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(forecastStates) {
                 TodayForeCastItem(theme,hourlyForecastUiState = it)
