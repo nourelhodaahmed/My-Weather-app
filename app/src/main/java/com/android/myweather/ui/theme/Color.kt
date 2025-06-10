@@ -54,7 +54,7 @@ fun appTheme(isDay: Boolean): ThemeColor{
         backgroundLightBlue = Color(0xFF1E1E1E),
         background2 = Color(0xFF0D0C19),
         HeaderDarkBlue = Color(0xFFFFFFFF),
-        BlurBlue32pre = Color(0xFFC0B7FF),
+        BlurBlue32pre = Color(0x80C0B7FF),
         IcondarkRed = Color(0xFFFFFFFF),
         boxBackgroundwhite70pre = Color(0xB3060414),
         contentDarkBlue60pre = Color(0x99FFFFFF),
