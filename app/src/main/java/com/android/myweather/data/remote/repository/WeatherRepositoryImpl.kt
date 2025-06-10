@@ -8,14 +8,12 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
-import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 
 class WeatherRepositoryImpl(
     val weatherMapper: WeatherMapper
 ): WeatherRepository {
     override suspend fun getWeatherByCoordinate(lat: Double, long: Double): Weather {
-
         val response = HttpClient(CIO).get(BASE_WEATHER_URL){
             url {
                 parameters.append("latitude", lat.toString())

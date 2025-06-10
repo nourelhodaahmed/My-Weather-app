@@ -15,23 +15,10 @@ class LocationRepositoryImpl(
     val fusedLocationProviderClient: FusedLocationProviderClient,
     val context: Context
 ) : LocationRepository {
-
     @RequiresPermission(allOf = [Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION])
     override suspend fun getLocation(): Location {
         return suspendCancellableCoroutine { cont ->
             val locationTask = fusedLocationProviderClient.lastLocation
-            /*if (locationTask.isComplete) {
-                val loc = locationTask.result
-                val city = getCity(loc)
-                cont.resume(
-                    Location(
-                        latitude = loc.latitude,
-                        longitude = loc.longitude,
-                        city = city
-                    )
-                )
-                return@suspendCancellableCoroutine
-            }*/
 
             locationTask.addOnSuccessListener { loc ->
                 val city = getCity(loc)
