@@ -56,7 +56,7 @@ fun WeeklyForecastItem(
         Image(
             painter = painterResource(weeklyForecastUiState.forecastImg),
             contentDescription = null,
-            modifier = Modifier.size(32.dp)
+            modifier = Modifier.size(50.dp)
         )
         Row (
             horizontalArrangement = Arrangement.spacedBy(8.dp),

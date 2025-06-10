@@ -10,6 +10,7 @@ import com.android.myweather.domain.model.Weather
 import com.android.myweather.domain.model.WeatherForecast
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class WeatherMapper{
@@ -35,16 +36,26 @@ class WeatherMapper{
         for ( index in 0..< hourly.time.size){
             val date = LocalDateTime.parse(hourly.time[index], DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
             if (date.dayOfMonth == LocalDate.now().dayOfMonth){
-                hourlyWeather.add(
-                    HourlyWeather(
-                        hour = date.hour,
-                        weatherForecast = getWeatherForeCast(hourly.weatherCode[index]),
-                        temperature = hourly.temperature2m[index].toInt()
+                if(date.hour >= ZonedDateTime.now().hour){
+                    hourlyWeather.add(
+                        HourlyWeather(
+                            hour = getHourFrom24(date.hour),
+                            weatherForecast = getWeatherForeCast(hourly.weatherCode[index]),
+                            temperature = hourly.temperature2m[index].toInt()
+                        )
                     )
-                )
+                }
             }
         }
         return hourlyWeather
+    }
+
+    private fun getHourFrom24(hour: Int): Int{
+        return when {
+            hour == 0 -> 12
+            hour > 12 -> hour - 12
+            else -> hour
+        }
     }
 
     private fun getWeeklyWeather(daily: Daily): List<DailyWeather>{
