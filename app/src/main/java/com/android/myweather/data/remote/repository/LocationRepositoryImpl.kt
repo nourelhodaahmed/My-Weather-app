@@ -43,6 +43,6 @@ class LocationRepositoryImpl(
         val geocoder = Geocoder(context, Locale.getDefault())
         return try {
             val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-            addresses?.firstOrNull()?.locality ?: "Unknown" } catch (e: Exception) { "Unknown" }
+            addresses?.firstOrNull()?.adminArea ?: "Unknown" } catch (e: Exception) { "Unknown" }
     }
 }

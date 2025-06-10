@@ -20,7 +20,7 @@ class WeatherMapper{
     private fun getTodayForecastUiStatefromWeather(weather: Weather): TodayForecastUiState{
         return TodayForecastUiState(
             temperature = weather.currentTemperature,
-            forecast = weather.currentWeatherForecast.name,
+            forecast = weather.currentWeatherForecast.name.replace("_", " ").lowercase().capitalize(),
             forecastImg = getForecastImage(weatherForecast = weather.currentWeatherForecast, isDay = weather.isDay),
             minTemp = weather.minTemperature,
             maxTemp = weather.maxTemperature,
@@ -35,7 +35,6 @@ class WeatherMapper{
 
     private fun gethourlyForecastUiStatefromWeather(weather: Weather): List<HourlyForecastUiState> {
         val hourly = mutableListOf<HourlyForecastUiState>()
-        
         for ( hourweather in weather.hourlyWeather){
             hourly.add(
                 HourlyForecastUiState(
@@ -50,11 +49,10 @@ class WeatherMapper{
 
     private fun getweeklyForecastUiStatefromWeather(weather: Weather): List<WeeklyForecastUiState> {
         val weekly = mutableListOf<WeeklyForecastUiState>()
-
         for ( weekweather in weather.weeklyWeather){
             weekly.add(
                 WeeklyForecastUiState(
-                    day = weekweather.day.name,
+                    day = weekweather.day.name.lowercase().capitalize(),
                     forecastImg = getForecastImage(weatherForecast = weekweather.weatherForecast, isDay = weather.isDay),
                     minTemp = weekweather.minTemperature,
                     maxTemp = weekweather.maxTemperature

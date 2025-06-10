@@ -17,7 +17,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.presenation.composable.CurrentLocationInfo
@@ -26,7 +25,7 @@ import com.android.myweather.presenation.composable.CurrentWeatherDetailsInfo
 import com.android.myweather.presenation.composable.TodayForecast
 import com.android.myweather.presenation.composable.WeeklyForecast
 import com.android.myweather.presenation.viewmodel.WeatherViewModel
-import com.android.myweather.ui.theme.lightBlue
+import com.android.myweather.ui.theme.appTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -34,6 +33,9 @@ fun HomeScreen(viewModel: WeatherViewModel = koinViewModel()){
 
     val weatherUiState = viewModel.weatherUiData.collectAsState().value
     val cityName = viewModel.cityName.collectAsState().value
+    val isDay = viewModel.isDay.collectAsState().value
+
+    val theme = appTheme(isDay)
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -41,8 +43,6 @@ fun HomeScreen(viewModel: WeatherViewModel = koinViewModel()){
         val granted = permissions.all { it.value }
         if (granted) {
             viewModel.getCurrentLocation()
-        } else {
-            viewModel.changeErrorMessage("Location permissions denied")
         }
     }
 
@@ -59,7 +59,6 @@ fun HomeScreen(viewModel: WeatherViewModel = koinViewModel()){
         }
     }
 
-
     val scrollState = rememberScrollState()
     val isScrolled = scrollState.value > 1
 
@@ -67,25 +66,27 @@ fun HomeScreen(viewModel: WeatherViewModel = koinViewModel()){
         verticalArrangement = Arrangement.spacedBy(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
-            .background(brush = Brush.linearGradient(listOf(lightBlue, White)))
+            .background(brush = Brush.linearGradient(listOf(theme.backgroundLightBlue, theme.background2)))
             .verticalScroll(scrollState)
     ) {
         Box(
             contentAlignment = Alignment.TopCenter,
             modifier = Modifier.padding(horizontal = 12.dp)
         ){
-            cityName?.let { CurrentLocationInfo(Modifier.padding(top = 64.dp), it) }
             CurrentWeather(
                 Modifier.padding(top = 76.dp),
                 isScrolled,
+                theme,
                 forecastImg = weatherUiState.todayForecastUiState.forecastImg,
                 temperature = weatherUiState.todayForecastUiState.temperature,
                 forecast = weatherUiState.todayForecastUiState.forecast,
                 minTemp = weatherUiState.todayForecastUiState.minTemp,
                 maxTemp = weatherUiState.todayForecastUiState.maxTemp
             )
+            CurrentLocationInfo(Modifier.padding(top = 64.dp), cityName, theme)
         }
         CurrentWeatherDetailsInfo(
+            theme,
             wind = weatherUiState.todayForecastUiState.wind,
             rain = weatherUiState.todayForecastUiState.rain,
             feelsLike = weatherUiState.todayForecastUiState.feelLike,
@@ -93,8 +94,8 @@ fun HomeScreen(viewModel: WeatherViewModel = koinViewModel()){
             pressure = weatherUiState.todayForecastUiState.pressure,
             uv_index = weatherUiState.todayForecastUiState.uvIndex
         )
-        TodayForecast(forecastStates = weatherUiState.hourlyForecastUiState)
-        WeeklyForecast(forecastStates = weatherUiState.weeklyForecastUiState)
+        TodayForecast(theme, forecastStates = weatherUiState.hourlyForecastUiState)
+        WeeklyForecast(theme, forecastStates = weatherUiState.weeklyForecastUiState)
     }
 }
 

@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -23,16 +24,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
 import com.android.myweather.presenation.viewmodel.state.HourlyForecastUiState
-import com.android.myweather.ui.theme.darkBlue60pre
-import com.android.myweather.ui.theme.darkBlue87pre
-import com.android.myweather.ui.theme.darkBlue8pre
+import com.android.myweather.ui.theme.ThemeColor
 import com.android.myweather.ui.theme.letterSpacing25
 import com.android.myweather.ui.theme.text16
 import com.android.myweather.ui.theme.urbanist
-import com.android.myweather.ui.theme.white70pre
 
 @Composable
 fun TodayForeCastItem(
+    theme: ThemeColor,
     hourlyForecastUiState: HourlyForecastUiState = HourlyForecastUiState(
         forecastImage = R.drawable.weather_icon,
         temperatureDegree = "25°C",
@@ -44,13 +43,13 @@ fun TodayForeCastItem(
             .width(88.dp)
     ){
         Card(
-            colors = CardDefaults.cardColors(containerColor = white70pre),
+            colors = CardDefaults.cardColors(containerColor = theme.boxBackgroundwhite70pre),
             modifier = Modifier
                 .width(88.dp)
                 .padding(top = 12.dp)
                 .height(120.dp)
                 .clip(RoundedCornerShape(20.dp))
-                .border(width = 1.dp, color = darkBlue8pre, shape = RoundedCornerShape(20.dp))
+                .border(width = 1.dp, color = theme.ButtonsdarkBlue8pre, shape = RoundedCornerShape(20.dp))
         ){}
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -64,7 +63,7 @@ fun TodayForeCastItem(
             Spacer(Modifier.height(16.dp))
             Text(
                 text = hourlyForecastUiState.temperatureDegree,
-                color = darkBlue87pre,
+                color = theme.header2darkBlue87pre,
                 fontSize = text16,
                 letterSpacing = letterSpacing25,
                 textAlign = TextAlign.Center,
@@ -74,7 +73,7 @@ fun TodayForeCastItem(
             Spacer(Modifier.height(4.dp))
             Text(
                 text = hourlyForecastUiState.hour,
-                color = darkBlue60pre,
+                color = theme.contentDarkBlue60pre,
                 fontSize = text16,
                 letterSpacing = letterSpacing25,
                 textAlign = TextAlign.Center,
@@ -88,5 +87,16 @@ fun TodayForeCastItem(
 @Preview(showBackground = true)
 @Composable
 private fun TodayForeCastItemPreview(){
-    TodayForeCastItem()
+    TodayForeCastItem(ThemeColor(
+        backgroundLightBlue = Color(0xFF87CEFA),
+        background2 = Color(0xFFFFFFFF),
+        HeaderDarkBlue = Color(0xFF060414),
+        BlurBlue32pre = Color(0x5200619D),
+        IcondarkRed = Color(0xFF323232),
+        boxBackgroundwhite70pre = Color(0xB3FFFFFF),
+        contentDarkBlue60pre = Color(0x99060414),
+        ButtonsdarkBlue8pre = Color(0x14060414),
+        verticaldarkBlue24pre = Color(0x3D060414),
+        header2darkBlue87pre = Color(0xDE060414)
+    ))
 }

@@ -21,21 +21,17 @@ class WeatherViewModel(
     val context: Context,
 ):ViewModel(){
 
-    private val _cityName = MutableStateFlow<String?>(null)
-    val cityName: StateFlow<String?> = _cityName.asStateFlow()
+    private val _cityName = MutableStateFlow("")
+    val cityName: StateFlow<String> = _cityName.asStateFlow()
 
-    private val _weatherUiData = MutableStateFlow<WeatherUiState>(WeatherUiState())
+    private val _weatherUiData = MutableStateFlow(WeatherUiState())
     val weatherUiData: StateFlow<WeatherUiState> = _weatherUiData.asStateFlow()
 
-    private val _showLocationSettings = MutableStateFlow(false)
-    val showLocationSettings: StateFlow<Boolean> = _showLocationSettings.asStateFlow()
-
-    private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
+    private val _isDay = MutableStateFlow(true)
+    val isDay: StateFlow<Boolean> = _isDay.asStateFlow()
 
     fun getCurrentLocation() {
         if (!isLocationEnabled()) {
-            _showLocationSettings.value = true
             return
         }
         viewModelScope.launch {
@@ -44,8 +40,9 @@ class WeatherViewModel(
                 val weather = getCurrentWeatherUseCase(location.latitude, location.longitude)
                 _weatherUiData.value = weatherMapper.mapWeatherToWeatherUiState(weather)
                 _cityName.value = location.city
+                _isDay.value = weather.isDay
             } catch (e: Exception) {
-                _errorMessage.value = "Failed to get location or weather"
+
             }
         }
     }
@@ -59,17 +56,5 @@ class WeatherViewModel(
     fun checkPermission(): Boolean {
         return context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED &&
                 context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED
-    }
-
-    fun resetErrorMessage() {
-        _errorMessage.value = null
-    }
-
-    fun changeErrorMessage(msg: String){
-        _errorMessage.value = msg
-    }
-
-    fun resetLocationSettingsPrompt() {
-        _showLocationSettings.value = false
     }
 }

@@ -10,15 +10,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
+import com.android.myweather.ui.theme.ThemeColor
 
 @Composable
 fun CurrentWeather(
     modifier: Modifier = Modifier,
     isScrolled: Boolean = false,
+    theme: ThemeColor,
     temperature: Int = 24,
     forecast: String = "Partly cloudy",
     forecastImg: Int = R.drawable.weather_icon,
@@ -45,6 +48,7 @@ fun CurrentWeather(
         val tempInfoPaddingBottom: Dp by animateDpAsState(if(isScrolled) 14.5.dp else 0.dp)
 
         CurrentWeatherIcon(
+            theme,
             parentModifier = Modifier.padding(top = perantPaddingTop, bottom = perantPaddingBottom).size(blurSize),
             imageModifier = Modifier
                 .padding(top = imagePaddingTop, start = imagePaddingStart, bottom = imagePaddingBottom, end = imagePaddingEnd)
@@ -54,6 +58,7 @@ fun CurrentWeather(
             forecastImage = forecastImg
         )
         CurrentTemperatureInfo(
+            theme,
             modifier = Modifier.padding(top = tempInfoPaddingTop, start = tempInfoPaddingStart, bottom = tempInfoPaddingBottom).align(Alignment.BottomCenter),
             temperature = temperature,
             forecast = forecast,
@@ -66,5 +71,16 @@ fun CurrentWeather(
 @Preview(showBackground = true)
 @Composable
 private fun CurrentWeatherPreview(){
-    CurrentWeather(isScrolled = true)
+    CurrentWeather(isScrolled = true, theme = ThemeColor(
+        backgroundLightBlue = Color(0xFF87CEFA),
+        background2 = Color(0xFFFFFFFF),
+        HeaderDarkBlue = Color(0xFF060414),
+        BlurBlue32pre = Color(0x5200619D),
+        IcondarkRed = Color(0xFF323232),
+        boxBackgroundwhite70pre = Color(0xB3FFFFFF),
+        contentDarkBlue60pre = Color(0x99060414),
+        ButtonsdarkBlue8pre = Color(0x14060414),
+        verticaldarkBlue24pre = Color(0x3D060414),
+        header2darkBlue87pre = Color(0xDE060414)
+    ))
 }

@@ -14,21 +14,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
 import com.android.myweather.presenation.viewmodel.state.WeeklyForecastUiState
-import com.android.myweather.ui.theme.darkBlue
-import com.android.myweather.ui.theme.darkBlue8pre
+import com.android.myweather.ui.theme.HeaderDarkBlue
+import com.android.myweather.ui.theme.ButtonsdarkBlue8pre
+import com.android.myweather.ui.theme.ThemeColor
 import com.android.myweather.ui.theme.letterSpacing25
 import com.android.myweather.ui.theme.text20
 import com.android.myweather.ui.theme.urbanist
-import com.android.myweather.ui.theme.white70pre
+import com.android.myweather.ui.theme.boxBackgroundwhite70pre
 
 @Composable
 fun WeeklyForecast(
+    themeColor: ThemeColor,
     forecastStates: List<WeeklyForecastUiState>
 ){
     Column(
@@ -39,7 +42,7 @@ fun WeeklyForecast(
     ) {
         Text(
             text = "Next 7 days",
-            color = darkBlue,
+            color = themeColor.HeaderDarkBlue,
             fontSize = text20,
             letterSpacing = letterSpacing25,
             textAlign = TextAlign.Start,
@@ -48,17 +51,17 @@ fun WeeklyForecast(
         )
         Spacer(Modifier.height(12.dp))
         Card(
-            colors = CardDefaults.cardColors(containerColor = white70pre),
+            colors = CardDefaults.cardColors(containerColor = themeColor.boxBackgroundwhite70pre),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(4.dp)
                 .clip(RoundedCornerShape(24.dp))
-                .border(width = 1.dp, color = darkBlue8pre, shape = RoundedCornerShape(24.dp))
+                .border(width = 1.dp, color = themeColor.ButtonsdarkBlue8pre, shape = RoundedCornerShape(24.dp))
         ){
             for(forecast in 0..(forecastStates.size - 1)){
-                WeeklyForecastItem(weeklyForecastUiState = forecastStates[forecast])
+                WeeklyForecastItem(themeColor, weeklyForecastUiState = forecastStates[forecast])
                 if (forecast != forecastStates.size - 1){
-                    HorizontalDivider(color = darkBlue8pre)
+                    HorizontalDivider(color = themeColor.ButtonsdarkBlue8pre)
                 }
             }
         }
@@ -69,6 +72,18 @@ fun WeeklyForecast(
 @Composable
 private fun WeeklyForecastPreview(){
     WeeklyForecast(
+        ThemeColor(
+            backgroundLightBlue = Color(0xFF87CEFA),
+            background2 = Color(0xFFFFFFFF),
+            HeaderDarkBlue = Color(0xFF060414),
+            BlurBlue32pre = Color(0x5200619D),
+            IcondarkRed = Color(0xFF323232),
+            boxBackgroundwhite70pre = Color(0xB3FFFFFF),
+            contentDarkBlue60pre = Color(0x99060414),
+            ButtonsdarkBlue8pre = Color(0x14060414),
+            verticaldarkBlue24pre = Color(0x3D060414),
+            header2darkBlue87pre = Color(0xDE060414)
+        ),
         listOf(
             WeeklyForecastUiState(
                 day = "Monday",

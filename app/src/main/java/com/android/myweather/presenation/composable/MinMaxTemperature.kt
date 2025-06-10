@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
-import com.android.myweather.ui.theme.darkBlue60pre
+import com.android.myweather.ui.theme.contentDarkBlue60pre
 import com.android.myweather.ui.theme.letterSpacing25
 import com.android.myweather.ui.theme.text16
 import com.android.myweather.ui.theme.urbanist
@@ -47,5 +47,5 @@ fun MinMaxTemperature(icon: Painter, text: String, iconColor: Color, textColor: 
 @Preview(showBackground = true)
 @Composable
 private fun MinMaxTemperaturePreview(){
-    MinMaxTemperature(painterResource(R.drawable.arrow_up),"32°C", darkBlue60pre, darkBlue60pre)
+    MinMaxTemperature(painterResource(R.drawable.arrow_up),"32°C", contentDarkBlue60pre, contentDarkBlue60pre)
 }

@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -23,18 +24,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
-import com.android.myweather.ui.theme.darkBlue60pre
-import com.android.myweather.ui.theme.darkBlue87pre
-import com.android.myweather.ui.theme.darkBlue8pre
+import com.android.myweather.ui.theme.ThemeColor
+import com.android.myweather.ui.theme.backgroundLightBlue
 import com.android.myweather.ui.theme.letterSpacing25
-import com.android.myweather.ui.theme.lightBlue
 import com.android.myweather.ui.theme.text14
 import com.android.myweather.ui.theme.text20
 import com.android.myweather.ui.theme.urbanist
-import com.android.myweather.ui.theme.white70pre
 
 @Composable
 fun WeatherDetailsInfoItem(
+    theme: ThemeColor,
     icon: Painter = painterResource(R.drawable.wind),
     value: String = "13 KM/h",
     name: String = "Wind"
@@ -44,8 +43,8 @@ fun WeatherDetailsInfoItem(
         modifier = Modifier
             .width(108.dp)
             .clip(RoundedCornerShape(24.dp))
-            .border(width = 1.dp, color = darkBlue8pre, shape = RoundedCornerShape(24.dp))
-            .background(color = white70pre, shape = RoundedCornerShape(24.dp))
+            .border(width = 1.dp, color = theme.ButtonsdarkBlue8pre, shape = RoundedCornerShape(24.dp))
+            .background(color = theme.boxBackgroundwhite70pre, shape = RoundedCornerShape(24.dp))
     ){
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,13 +53,13 @@ fun WeatherDetailsInfoItem(
             Icon(
                 painter = icon,
                 contentDescription = null,
-                tint = lightBlue,
+                tint = backgroundLightBlue,
                 modifier = Modifier.size(32.dp)
             )
             Spacer(Modifier.height(8.dp))
             Text(
                 text = value,
-                color = darkBlue87pre,
+                color = theme.header2darkBlue87pre,
                 fontSize = text20,
                 letterSpacing = letterSpacing25,
                 textAlign = TextAlign.Center,
@@ -69,7 +68,7 @@ fun WeatherDetailsInfoItem(
             )
             Text(
                 text = name,
-                color = darkBlue60pre,
+                color = theme.contentDarkBlue60pre,
                 fontSize = text14,
                 letterSpacing = letterSpacing25,
                 textAlign = TextAlign.Center,
@@ -83,5 +82,16 @@ fun WeatherDetailsInfoItem(
 @Preview(showBackground = true)
 @Composable
 private fun WeatherDetailsInfoPreview(){
-    WeatherDetailsInfoItem()
+    WeatherDetailsInfoItem(theme = ThemeColor(
+        backgroundLightBlue = Color(0xFF87CEFA),
+        background2 = Color(0xFFFFFFFF),
+        HeaderDarkBlue = Color(0xFF060414),
+        BlurBlue32pre = Color(0x5200619D),
+        IcondarkRed = Color(0xFF323232),
+        boxBackgroundwhite70pre = Color(0xB3FFFFFF),
+        contentDarkBlue60pre = Color(0x99060414),
+        ButtonsdarkBlue8pre = Color(0x14060414),
+        verticaldarkBlue24pre = Color(0x3D060414),
+        header2darkBlue87pre = Color(0xDE060414)
+    ))
 }
