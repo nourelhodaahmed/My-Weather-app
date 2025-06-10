@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.android.myweather.di.appModule
 import com.android.myweather.presenation.screen.HomeScreen
-import com.android.myweather.presenation.screen.testScreen
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -20,8 +19,7 @@ class MainActivity : ComponentActivity() {
         }
         enableEdgeToEdge()
         setContent {
-            //HomeScreen()
-            testScreen()
+            HomeScreen()
         }
     }
 }

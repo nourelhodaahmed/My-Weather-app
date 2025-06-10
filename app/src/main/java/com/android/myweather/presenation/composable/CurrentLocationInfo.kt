@@ -21,7 +21,10 @@ import com.android.myweather.ui.theme.text16
 import com.android.myweather.ui.theme.urbanist
 
 @Composable
-fun CurrentLocationInfo(modifier: Modifier = Modifier){
+fun CurrentLocationInfo(
+    modifier: Modifier = Modifier,
+    cityName: String = "Baghdad",
+){
     Row(
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         modifier = modifier
@@ -33,7 +36,7 @@ fun CurrentLocationInfo(modifier: Modifier = Modifier){
             modifier = Modifier.size(24.dp)
         )
         Text(
-            text = "Baghdad" ,
+            text = cityName ,
             color = darkRed,
             fontSize = text16,
             letterSpacing = letterSpacing25,

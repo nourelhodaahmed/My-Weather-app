@@ -5,10 +5,10 @@ import android.content.Context
 import android.location.LocationManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.myweather.domain.model.Location
-import com.android.myweather.domain.model.Weather
 import com.android.myweather.domain.usecase.GetCurrentLocationUseCase
 import com.android.myweather.domain.usecase.GetCurrentWeatherUseCase
+import com.android.myweather.presenation.viewmodel.mapper.WeatherMapper
+import com.android.myweather.presenation.viewmodel.state.WeatherUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,21 +17,21 @@ import kotlinx.coroutines.launch
 class WeatherViewModel(
     val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
     val getCurrentLocationUseCase: GetCurrentLocationUseCase,
+    val weatherMapper: WeatherMapper,
     val context: Context,
 ):ViewModel(){
 
-    private val _locationData = MutableStateFlow<Location?>(null)
-    val locationData: StateFlow<Location?> = _locationData.asStateFlow()
+    private val _cityName = MutableStateFlow<String?>(null)
+    val cityName: StateFlow<String?> = _cityName.asStateFlow()
 
-    private val _weatherData = MutableStateFlow<Weather?>(null)
-    val weatherData: StateFlow<Weather?> = _weatherData.asStateFlow()
+    private val _weatherUiData = MutableStateFlow<WeatherUiState>(WeatherUiState())
+    val weatherUiData: StateFlow<WeatherUiState> = _weatherUiData.asStateFlow()
 
     private val _showLocationSettings = MutableStateFlow(false)
     val showLocationSettings: StateFlow<Boolean> = _showLocationSettings.asStateFlow()
 
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
-
 
     fun getCurrentLocation() {
         if (!isLocationEnabled()) {
@@ -41,9 +41,9 @@ class WeatherViewModel(
         viewModelScope.launch {
             try {
                 val location = getCurrentLocationUseCase()
-                _locationData.value = location
                 val weather = getCurrentWeatherUseCase(location.latitude, location.longitude)
-                _weatherData.value = weather
+                _weatherUiData.value = weatherMapper.mapWeatherToWeatherUiState(weather)
+                _cityName.value = location.city
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to get location or weather"
             }
@@ -72,5 +72,4 @@ class WeatherViewModel(
     fun resetLocationSettingsPrompt() {
         _showLocationSettings.value = false
     }
-
 }

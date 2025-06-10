@@ -12,7 +12,14 @@ import androidx.compose.ui.unit.dp
 import com.android.myweather.R
 
 @Composable
-fun CurrentWeatherDetailsInfo(){
+fun CurrentWeatherDetailsInfo(
+    wind: Int = 13,
+    humidity: Int = 24,
+    rain: Int = 2,
+    uv_index: Int = 2,
+    pressure: Int = 1012,
+    feelsLike: Int = 22,
+){
     Column(
         verticalArrangement = Arrangement.spacedBy(6.dp),
         modifier = Modifier.padding(horizontal = 12.dp)
@@ -22,17 +29,17 @@ fun CurrentWeatherDetailsInfo(){
         ){
             WeatherDetailsInfoItem(
                 icon = painterResource(R.drawable.wind),
-                value = "13 KM/h",
+                value = wind.toString() + " KM/h",
                 name = "Wind"
             )
             WeatherDetailsInfoItem(
                 icon = painterResource(R.drawable.humidity),
-                value = "24%",
+                value = humidity.toString() + "%",
                 name = "Humidity"
             )
             WeatherDetailsInfoItem(
                 icon = painterResource(R.drawable.rain),
-                value = "2%",
+                value = rain.toString() + "%",
                 name = "Rain"
             )
         }
@@ -41,17 +48,17 @@ fun CurrentWeatherDetailsInfo(){
         ){
             WeatherDetailsInfoItem(
                 icon = painterResource(R.drawable.uv_index),
-                value = "2",
+                value = uv_index.toString(),
                 name = "UV Index"
             )
             WeatherDetailsInfoItem(
                 icon = painterResource(R.drawable.pressure),
-                value = "1012 hPa",
+                value = pressure.toString() + " hPa",
                 name = "Pressure"
             )
             WeatherDetailsInfoItem(
                 icon = painterResource(R.drawable.feels_like),
-                value = "22°C",
+                value = feelsLike.toString() + "°C",
                 name = "Feels like"
             )
         }

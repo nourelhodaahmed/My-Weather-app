@@ -11,13 +11,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
-import com.android.myweather.presenation.viewmodel.state.TodayForecastUiState
+import com.android.myweather.presenation.viewmodel.state.HourlyForecastUiState
 import com.android.myweather.ui.theme.darkBlue87pre
 import com.android.myweather.ui.theme.letterSpacing25
 import com.android.myweather.ui.theme.text20
@@ -25,7 +24,7 @@ import com.android.myweather.ui.theme.urbanist
 
 @Composable
 fun TodayForecast(
-    forecastStates: List<TodayForecastUiState>
+    forecastStates: List<HourlyForecastUiState>
 ){
     Column(
         modifier = Modifier.padding(horizontal = 12.dp)
@@ -45,7 +44,7 @@ fun TodayForecast(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(forecastStates) {
-                TodayForeCastItem(todayForecastUiState = it)
+                TodayForeCastItem(hourlyForecastUiState = it)
             }
         }
     }
@@ -56,48 +55,48 @@ fun TodayForecast(
 private fun TodayForecastPreview(){
     TodayForecast(
         listOf(
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),
-            TodayForecastUiState(
-                forecastImage = painterResource(R.drawable.weather_icon),
+            HourlyForecastUiState(
+                forecastImage = R.drawable.weather_icon,
                 temperatureDegree = "25°C",
                 hour = "11:00"
             ),

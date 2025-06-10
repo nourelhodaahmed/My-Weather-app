@@ -30,7 +30,7 @@ import com.android.myweather.ui.theme.urbanist
 fun WeeklyForecastItem(
     weeklyForecastUiState: WeeklyForecastUiState = WeeklyForecastUiState(
         day = "Monday",
-        forecastImg = painterResource(R.drawable.weather_icon),
+        forecastImg = R.drawable.weather_icon,
         minTemp = 20,
         maxTemp = 32
     )
@@ -52,7 +52,7 @@ fun WeeklyForecastItem(
             modifier = Modifier.width(91.dp).align(Alignment.CenterVertically)
         )
         Image(
-            painter = weeklyForecastUiState.forecastImg,
+            painter = painterResource(weeklyForecastUiState.forecastImg),
             contentDescription = null,
             modifier = Modifier.width(91.dp).height(45.dp)
         )

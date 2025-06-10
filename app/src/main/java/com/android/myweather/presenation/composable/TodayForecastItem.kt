@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
-import com.android.myweather.presenation.viewmodel.state.TodayForecastUiState
+import com.android.myweather.presenation.viewmodel.state.HourlyForecastUiState
 import com.android.myweather.ui.theme.darkBlue60pre
 import com.android.myweather.ui.theme.darkBlue87pre
 import com.android.myweather.ui.theme.darkBlue8pre
@@ -33,8 +33,8 @@ import com.android.myweather.ui.theme.white70pre
 
 @Composable
 fun TodayForeCastItem(
-    todayForecastUiState: TodayForecastUiState = TodayForecastUiState(
-        forecastImage = painterResource(R.drawable.weather_icon),
+    hourlyForecastUiState: HourlyForecastUiState = HourlyForecastUiState(
+        forecastImage = R.drawable.weather_icon,
         temperatureDegree = "25°C",
         hour = "11:00"
     )
@@ -57,13 +57,13 @@ fun TodayForeCastItem(
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
             Image(
-                painter = todayForecastUiState.forecastImage,
+                painter = painterResource(hourlyForecastUiState.forecastImage),
                 contentDescription = null,
                 modifier = Modifier.width(64.dp).height(58.dp)
             )
             Spacer(Modifier.height(16.dp))
             Text(
-                text = todayForecastUiState.temperatureDegree,
+                text = hourlyForecastUiState.temperatureDegree,
                 color = darkBlue87pre,
                 fontSize = text16,
                 letterSpacing = letterSpacing25,
@@ -73,7 +73,7 @@ fun TodayForeCastItem(
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = todayForecastUiState.hour,
+                text = hourlyForecastUiState.hour,
                 color = darkBlue60pre,
                 fontSize = text16,
                 letterSpacing = letterSpacing25,

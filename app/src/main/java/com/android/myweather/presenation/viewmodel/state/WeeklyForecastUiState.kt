@@ -1,10 +1,10 @@
 package com.android.myweather.presenation.viewmodel.state
 
-import androidx.compose.ui.graphics.painter.Painter
+import com.android.myweather.R
 
 data class WeeklyForecastUiState(
-    val day: String,
-    val forecastImg: Painter,
-    val minTemp: Int,
-    val maxTemp: Int
+    val day: String = "",
+    val forecastImg: Int = R.drawable.fog_day,
+    val minTemp: Int = 0,
+    val maxTemp: Int = 0
 )

@@ -32,12 +32,14 @@ val appModule = module {
         )
     }
     single { WeatherMapper() }
+    single { com.android.myweather.presenation.viewmodel.mapper.WeatherMapper() }
     single { GetCurrentLocationUseCase(get()) }
     single { GetCurrentWeatherUseCase(get()) }
     viewModel {
         WeatherViewModel(
             getCurrentWeatherUseCase = get(),
             getCurrentLocationUseCase = get(),
+            weatherMapper = get(),
             context = androidContext()
         )
     }

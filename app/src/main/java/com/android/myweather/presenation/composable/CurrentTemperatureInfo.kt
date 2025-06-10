@@ -29,7 +29,13 @@ import com.android.myweather.ui.theme.text64
 import com.android.myweather.ui.theme.urbanist
 
 @Composable
-fun CurrentTemperatureInfo(modifier: Modifier){
+fun CurrentTemperatureInfo(
+    modifier: Modifier,
+    temperature: Int = 24,
+    forecast: String = "Partly cloudy",
+    minTemp: Int = 20,
+    maxTemp: Int = 32,
+){
     Column (
         modifier = modifier
     ){
@@ -38,7 +44,7 @@ fun CurrentTemperatureInfo(modifier: Modifier){
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text(
-                text = "24°C",
+                text = temperature.toString() + "°C",
                 color = darkBlue,
                 fontSize = text64,
                 letterSpacing = letterSpacing25,
@@ -47,7 +53,7 @@ fun CurrentTemperatureInfo(modifier: Modifier){
                 fontFamily = urbanist,
             )
             Text(
-                text = "Partly cloudy",
+                text = forecast,
                 color = darkBlue60pre,
                 fontSize = text16,
                 letterSpacing = letterSpacing25,
@@ -58,21 +64,21 @@ fun CurrentTemperatureInfo(modifier: Modifier){
 
         }
         Spacer(Modifier.height(12.dp))
-        MinMaxButton()
+        MinMaxButton(minTemp , maxTemp)
     }
 }
 
 @Composable
-private fun MinMaxButton(){
+private fun MinMaxButton(minTemp: Int = 20, maxTemp: Int = 32){
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .background(color = darkBlue8pre, shape = RoundedCornerShape(100.dp))
             .padding(horizontal = 24.dp, vertical = 8.dp)
     ) {
-        MinMaxTemperature(painterResource(R.drawable.arrow_up),"32°C", darkBlue60pre, darkBlue60pre)
+        MinMaxTemperature(painterResource(R.drawable.arrow_up),maxTemp.toString()+ "°C", darkBlue60pre, darkBlue60pre)
         VerticalDivider(color = darkBlue24pre, modifier = Modifier.height(19.dp))
-        MinMaxTemperature(painterResource(R.drawable.arrow_down),"20°C", darkBlue60pre, darkBlue60pre)
+        MinMaxTemperature(painterResource(R.drawable.arrow_down),minTemp.toString()+ "°C", darkBlue60pre, darkBlue60pre)
     }
 }
 

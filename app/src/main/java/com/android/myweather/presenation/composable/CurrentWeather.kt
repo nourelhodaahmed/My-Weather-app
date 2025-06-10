@@ -13,11 +13,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.android.myweather.R
 
 @Composable
 fun CurrentWeather(
     modifier: Modifier = Modifier,
-    isScrolled: Boolean = false
+    isScrolled: Boolean = false,
+    temperature: Int = 24,
+    forecast: String = "Partly cloudy",
+    forecastImg: Int = R.drawable.weather_icon,
+    minTemp: Int = 20,
+    maxTemp: Int = 32,
 ){
     Box(
         modifier = modifier
@@ -44,10 +50,15 @@ fun CurrentWeather(
                 .padding(top = imagePaddingTop, start = imagePaddingStart, bottom = imagePaddingBottom, end = imagePaddingEnd)
                 .height(imageHeight)
                 .width(imageWidth),
-            blurModifier = Modifier.size(blurSize)
+            blurModifier = Modifier.size(blurSize),
+            forecastImage = forecastImg
         )
         CurrentTemperatureInfo(
-            modifier = Modifier.padding(top = tempInfoPaddingTop, start = tempInfoPaddingStart, bottom = tempInfoPaddingBottom).align(Alignment.BottomCenter)
+            modifier = Modifier.padding(top = tempInfoPaddingTop, start = tempInfoPaddingStart, bottom = tempInfoPaddingBottom).align(Alignment.BottomCenter),
+            temperature = temperature,
+            forecast = forecast,
+            minTemp = minTemp,
+            maxTemp = maxTemp
         )
     }
 }
