@@ -19,7 +19,6 @@ val appModule = module {
     single<FusedLocationProviderClient> {
         LocationServices.getFusedLocationProviderClient(androidContext())
     }
-    //single<HttpClient> { HttpClient(CIO) }
     single<LocationRepository> {
         LocationRepositoryImpl(
             fusedLocationProviderClient = get(),

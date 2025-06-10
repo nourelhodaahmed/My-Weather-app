@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
 import com.android.myweather.ui.theme.verticaldarkBlue24pre
-import com.android.myweather.ui.theme.ButtonsdarkBlue8pre
 import com.android.myweather.ui.theme.ThemeColor
 import com.android.myweather.ui.theme.letterSpacing25
 import com.android.myweather.ui.theme.text16

@@ -21,13 +21,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.myweather.R
 import com.android.myweather.presenation.viewmodel.state.WeeklyForecastUiState
-import com.android.myweather.ui.theme.HeaderDarkBlue
-import com.android.myweather.ui.theme.ButtonsdarkBlue8pre
 import com.android.myweather.ui.theme.ThemeColor
 import com.android.myweather.ui.theme.letterSpacing25
 import com.android.myweather.ui.theme.text20
 import com.android.myweather.ui.theme.urbanist
-import com.android.myweather.ui.theme.boxBackgroundwhite70pre
 
 @Composable
 fun WeeklyForecast(

@@ -58,7 +58,7 @@ fun TodayForeCastItem(
             Image(
                 painter = painterResource(hourlyForecastUiState.forecastImage),
                 contentDescription = null,
-                modifier = Modifier.width(64.dp).height(58.dp)
+                modifier = Modifier.width(64.dp).height(60.dp)
             )
             Spacer(Modifier.height(16.dp))
             Text(
