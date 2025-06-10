@@ -67,6 +67,7 @@ fun HomeScreen(viewModel: WeatherViewModel = koinViewModel()){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
             .background(brush = Brush.linearGradient(listOf(theme.backgroundLightBlue, theme.background2)))
+            .padding(top = 40.dp)
             .verticalScroll(scrollState)
     ) {
         Box(

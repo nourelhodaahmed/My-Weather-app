@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -35,31 +34,16 @@ fun CurrentWeatherIcon(
     Box (
         modifier = parentModifier
     ){
-        /*Box(
-            modifier = blurModifier
-                .clip(CircleShape)
-                .blur(150.dp)
-        ){
-            Box(
-                modifier = blurModifier
-                    .clip(CircleShape)
-                    .blur(150.dp)
-                    .background(theme.BlurBlue32pre, shape = CircleShape)
-            )
-        }*/
-
         Box(
             modifier = blurModifier
-                //.offset(x = 15.dp, y = 25.dp) // Adjust offset to center shadow under image
                 .clip(CircleShape)
                 .background(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            theme.BlurBlue32pre, // Highest intensity at center
-                            theme.backgroundLightBlue.copy(alpha = 0.09f) // Fade to transparent at edges
+                            theme.BlurBlue32pre,
+                            theme.backgroundLightBlue.copy(alpha = 0.09f)
                         ),
-                        center = Offset.Unspecified, // Default center of the box
-                        radius = 125.dp.value // Half of shadow size for full spread
+                        center = Offset.Unspecified,
                     ),
                     shape = CircleShape
                 )

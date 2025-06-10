@@ -29,9 +29,7 @@ fun TodayForecast(
     theme: ThemeColor,
     forecastStates: List<HourlyForecastUiState>
 ){
-    Column(
-        modifier = Modifier.padding(horizontal = 12.dp)
-    ){
+    Column{
         Text(
             text = "Today",
             color = header2darkBlue87pre,
@@ -40,6 +38,7 @@ fun TodayForecast(
             textAlign = TextAlign.Start,
             fontWeight = FontWeight.W600,
             fontFamily = urbanist,
+            modifier = Modifier.padding(horizontal = 12.dp)
         )
         Spacer(Modifier.height(24.dp))
         LazyRow(
