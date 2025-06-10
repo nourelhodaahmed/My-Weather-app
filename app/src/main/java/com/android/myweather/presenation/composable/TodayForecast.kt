@@ -32,7 +32,7 @@ fun TodayForecast(
     Column{
         Text(
             text = "Today",
-            color = header2darkBlue87pre,
+            color = theme.header2darkBlue87pre,
             fontSize = text20,
             letterSpacing = letterSpacing25,
             textAlign = TextAlign.Start,

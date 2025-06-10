@@ -63,7 +63,7 @@ fun WeeklyForecastItem(
             modifier = Modifier.align(Alignment.CenterVertically)
             ){
             MinMaxTemperature(painterResource(R.drawable.arrow_up),"${weeklyForecastUiState.maxTemp}°C", themeColor.header2darkBlue87pre, themeColor.header2darkBlue87pre)
-            VerticalDivider(color = verticaldarkBlue24pre, modifier = Modifier.height(19.dp))
+            VerticalDivider(color = themeColor.verticaldarkBlue24pre, modifier = Modifier.height(19.dp))
             MinMaxTemperature(painterResource(R.drawable.arrow_down),"${weeklyForecastUiState.minTemp}°C", themeColor.header2darkBlue87pre, themeColor.header2darkBlue87pre)
         }
     }
