@@ -27,6 +27,7 @@ class WeatherMapper{
             feelsLike = weatherDto.current.apparentTemperature.toInt(),
             hourlyWeather = getHourlyWeather(weatherDto.hourly),
             weeklyWeather = getWeeklyWeather(weatherDto.daily),
+            isDay = if(weatherDto.current.isDay == 1) true else false
         )
     }
     private fun getHourlyWeather(hourly: Hourly): List<HourlyWeather>{

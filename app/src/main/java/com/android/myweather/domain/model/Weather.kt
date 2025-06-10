@@ -12,5 +12,6 @@ data class Weather (
     val pressure: Int,
     val feelsLike: Int,
     val hourlyWeather: List<HourlyWeather>,
-    val weeklyWeather: List<DailyWeather>
+    val weeklyWeather: List<DailyWeather>,
+    val isDay: Boolean
 )
